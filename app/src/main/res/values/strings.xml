@@ -24,8 +24,46 @@
     <string name="login_registrarse_docente">Registrarse como Docente</string>
     <string name="login_olvido">¿Olvidó su contraseña?</string>
 
+    <string name="olvido_titulo">Recuperar contraseña</string>
+    <string name="olvido_mensaje">Se generará una nueva contraseña y se enviará a su correo electrónico.</string>
+    <string name="olvido_email_hint">Correo electrónico</string>
+    <string name="olvido_enviar">Enviar</string>
+    <string name="olvido_cancelar">Cancelar</string>
+
+    <string name="registro_titulo_estudiante">Registro de Estudiante</string>
+    <string name="registro_titulo_docente">Registro de Docente</string>
+    <string name="sec_datos_personales">Datos Personales</string>
+    <string name="sec_cuenta">Datos de la Cuenta</string>
+    <string name="sec_datos_registro">Datos del Registro</string>
+    <string name="label_nombres">Nombres</string>
+    <string name="label_apellidos">Apellidos</string>
+    <string name="label_cedula">Cédula</string>
+    <string name="label_fecha_nacimiento">Fecha de nacimiento</string>
+    <string name="label_sexo">Sexo</string>
+    <string name="label_telefonos">Teléfonos</string>
+    <string name="label_email">Correo electrónico</string>
+    <string name="label_username">Nombre de usuario</string>
+    <string name="label_password">Contraseña</string>
+    <string name="label_password_confirmar">Confirmar contraseña</string>
+    <string name="label_expediente">Número de expediente</string>
+    <string name="label_clave_registro">Clave de registro</string>
+    <string name="label_captcha">Captcha</string>
+    <string name="hint_captcha">Escriba el resultado de la operación</string>
+    <string name="captcha_recargar">Recargar captcha</string>
+    <string name="registro_boton">Registrarme</string>
+    <string name="registro_sexo_f">Femenino</string>
+    <string name="registro_sexo_m">Masculino</string>
+    <string name="registro_registrando">Registrando…</string>
+    <string name="registro_ok">Registro exitoso. Ya puede ingresar al sistema.</string>
+
+    <string name="perfil_cambiar_foto">Cambiar foto</string>
+    <string name="perfil_guardar">Guardar cambios</string>
+    <string name="perfil_guardado">Perfil actualizado correctamente.</string>
+    <string name="label_twitter">Twitter</string>
+    <string name="label_instagram">Instagram</string>
+    <string name="label_facebook">Facebook</string>
+
     <string name="generico_sin_datos">No hay datos que mostrar.</string>
-    <string name="generico_error">Ocurrió un error: %1$s</string>
     <string name="generico_error_red">Sin conexión. Verifique su red e intente de nuevo.</string>
     <string name="generico_error_sesion">Su sesión expiró. Vuelva a iniciar sesión.</string>
     <string name="generico_recargar">Recargar</string>

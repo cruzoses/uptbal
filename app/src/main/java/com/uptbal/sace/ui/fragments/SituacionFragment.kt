@@ -4,49 +4,85 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.uptbal.sace.data.api.ApiClient
+import com.uptbal.sace.data.api.SituacionPrograma
+import com.uptbal.sace.util.Boxes
 import kotlinx.coroutines.launch
 
-class SituacionFragment : BaseFragment() {
+class SituacionFragment : BaseListFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitulo("Situación Académica")
         cargar()
-        setRecargar { cargar() }
     }
 
-    private fun cargar() {
+    override fun cargar() {
+        mostrarCargando()
         lifecycleScope.launch {
-            setCargando()
             try {
                 val res = ApiClient.service.situacion()
-                if (res.success) {
-                    val programas = res.data.orEmpty()
-                    if (programas.isEmpty()) {
-                        setContenido("No hay situación académica registrada.")
-                    } else {
-                        setContenido(
-                            programas.joinToString("\n\n") { p ->
-                                val r = p.resumen
-                                buildString {
-                                    append(p.programa?.nombre ?: p.programa?.codename ?: "Programa")
-                                    append("\nCarrera: ").append(p.carrera?.nombre ?: "-")
-                                    append("\nCréditos: ").append(r?.creditos_aprobados ?: 0).append(" / ").append(r?.creditos_programa ?: 0)
-                                    append("\nAprobadas: ").append(r?.asignaturas_aprobadas ?: 0).append(" / ").append(r?.total_asignaturas ?: 0)
-                                    append("\n% Aprobado: ").append(r?.porcentaje_aprobado ?: 0.0)
-                                    append("\nISA: ").append(r?.isa ?: 0.0).append("  IRA: ").append(r?.ira ?: 0.0)
-                                }
-                            }
-                        )
-                    }
-                } else {
-                    setContenido(res.error ?: "No se pudo cargar la situación académica.")
+                finCarga()
+                if (!res.success) {
+                    mostrarVacio(res.error ?: "No se pudo cargar la situación académica.")
+                    return@launch
                 }
+                val programas = res.data.orEmpty()
+                if (programas.isEmpty()) {
+                    mostrarVacio("No hay situación académica registrada.")
+                    return@launch
+                }
+                vaciar()
+                programas.forEach { binding.contenedor.addView(boxPrograma(it)) }
             } catch (t: Throwable) {
+                finCarga()
                 mensajeError(t)
-                setContenido("No se pudo cargar la situación académica.")
-            } finally {
-                finCargando()
+                mostrarVacio("No se pudo cargar la situación académica.")
+            }
+        }
+    }
+
+    private fun boxPrograma(p: SituacionPrograma): View {
+        val ctx = requireContext()
+        return Boxes.tarjeta(ctx, p.programa?.nombre ?: p.programa?.codename ?: "Programa") { body ->
+            body.addView(Boxes.filaSimple(ctx, "Carrera", p.carrera?.nombre ?: "-"))
+            val r = p.resumen
+            body.addView(Boxes.linea(ctx))
+            body.addView(
+                Boxes.filaTabla(
+                    ctx,
+                    listOf("Créditos", "Aprobadas", "% Aprobado", "ISA", "IRA"),
+                    header = true
+                )
+            )
+            body.addView(
+                Boxes.filaTabla(
+                    ctx,
+                    listOf(
+                        "${r?.creditos_aprobados ?: 0} / ${r?.creditos_programa ?: 0}",
+                        "${r?.asignaturas_aprobadas ?: 0} / ${r?.total_asignaturas ?: 0}",
+                        "${r?.porcentaje_aprobado ?: 0.0}%",
+                        "${r?.isa ?: 0.0}",
+                        "${r?.ira ?: 0.0}"
+                    )
+                )
+            )
+            body.addView(Boxes.linea(ctx))
+            body.addView(
+                Boxes.filaTabla(ctx, listOf("Asignatura", "Tray.", "Nota", "Pdo."), header = true)
+            )
+            p.asignaturas.forEach { a ->
+                val aprobada = a.aprobada == 1
+                body.addView(
+                    Boxes.filaTabla(
+                        ctx,
+                        listOf(
+                            a.asignatura_nombre ?: "-",
+                            a.trayecto ?: "-",
+                            a.calificacion ?: "-",
+                            a.periodo ?: "-"
+                        ),
+                        colores = mapOf(2 to Boxes.colorNota(ctx, a.calificacion, aprobada))
+                    )
+                )
             }
         }
     }

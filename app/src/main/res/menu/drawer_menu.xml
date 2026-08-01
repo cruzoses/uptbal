@@ -3,31 +3,31 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_inicio"
+            android:id="@+id/dashboardFragment"
             android:icon="@drawable/ic_home"
             android:title="@string/nav_inicio" />
         <item
-            android:id="@+id/nav_situacion"
+            android:id="@+id/situacionFragment"
             android:icon="@drawable/ic_school"
             android:title="@string/nav_situacion" />
         <item
-            android:id="@+id/nav_notas"
+            android:id="@+id/notasFragment"
             android:icon="@drawable/ic_notas"
             android:title="@string/nav_notas" />
         <item
-            android:id="@+id/nav_inscripciones"
+            android:id="@+id/inscripcionesFragment"
             android:icon="@drawable/ic_inscripciones"
             android:title="@string/nav_inscripciones" />
         <item
-            android:id="@+id/nav_historicos"
+            android:id="@+id/historicosFragment"
             android:icon="@drawable/ic_historicos"
             android:title="@string/nav_historicos" />
         <item
-            android:id="@+id/nav_noticias"
+            android:id="@+id/noticiasFragment"
             android:icon="@drawable/ic_noticias"
             android:title="@string/nav_noticias" />
         <item
-            android:id="@+id/nav_perfil"
+            android:id="@+id/perfilFragment"
             android:icon="@drawable/ic_perfil"
             android:title="@string/nav_perfil" />
     </group>

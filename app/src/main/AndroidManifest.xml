@@ -26,6 +26,12 @@
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.Uptbal" />
+
+        <activity
+            android:name=".ui.registro.RegistroActivity"
+            android:exported="false"
+            android:label="@string/registro_titulo_estudiante"
+            android:theme="@style/Theme.Uptbal" />
     </application>
 
 </manifest>
