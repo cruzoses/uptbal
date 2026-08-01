@@ -1,0 +1,8 @@
+# Add project specific ProGuard rules here.
+-keepattributes Signature
+-keepattributes *Annotation*
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-keepclassmembers class * {
+    @androidx.annotation.Keep *;
+}

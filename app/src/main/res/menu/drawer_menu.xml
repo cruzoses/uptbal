@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@drawable/ic_home"
+            android:title="@string/nav_inicio" />
+        <item
+            android:id="@+id/nav_situacion"
+            android:icon="@drawable/ic_school"
+            android:title="@string/nav_situacion" />
+        <item
+            android:id="@+id/nav_notas"
+            android:icon="@drawable/ic_notas"
+            android:title="@string/nav_notas" />
+        <item
+            android:id="@+id/nav_inscripciones"
+            android:icon="@drawable/ic_inscripciones"
+            android:title="@string/nav_inscripciones" />
+        <item
+            android:id="@+id/nav_historicos"
+            android:icon="@drawable/ic_historicos"
+            android:title="@string/nav_historicos" />
+        <item
+            android:id="@+id/nav_noticias"
+            android:icon="@drawable/ic_noticias"
+            android:title="@string/nav_noticias" />
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_perfil"
+            android:title="@string/nav_perfil" />
+    </group>
+
+    <item
+        android:id="@+id/nav_salir"
+        android:icon="@drawable/ic_salir"
+        android:title="@string/nav_salir" />
+</menu>
