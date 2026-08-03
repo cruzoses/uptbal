@@ -87,7 +87,7 @@ class NotasFragment : BaseListFragment() {
                                 e.descripcion ?: e.indicador ?: "-",
                                 e.fecha ?: "-",
                                 String.format(Locale.US, "%.0f%%", e.ponderacion),
-                                e.nota?.let { String.format(Locale.US, "%.2f", it) } ?: "-"
+                                e.nota ?: "-"
                             )
                         )
                     )

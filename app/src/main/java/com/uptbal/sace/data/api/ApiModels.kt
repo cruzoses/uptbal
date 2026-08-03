@@ -166,7 +166,7 @@ data class EvaluacionDto(
     val ponderacion: Double = 0.0,
     val escala_nota: Double = 0.0,
     val indicador: String? = null,
-    val nota: Double? = null
+    val nota: String? = null
 )
 
 @Serializable

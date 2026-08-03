@@ -1,6 +1,7 @@
 package com.uptbal.sace.ui.registro
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -59,6 +60,10 @@ class RegistroActivity : AppCompatActivity() {
         binding.inputFechaNac.setOnClickListener { mostrarSelectorFecha() }
         binding.btnRecargarCaptcha.setOnClickListener { cargarCaptcha() }
         binding.btnRegistrar.setOnClickListener { registrar() }
+        binding.btnSolicitarClave.setOnClickListener {
+            startActivity(Intent(this, RegistroRapidoActivity::class.java))
+            finish()
+        }
 
         cargarCaptcha()
     }

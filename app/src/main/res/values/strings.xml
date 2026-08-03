@@ -16,6 +16,9 @@
 
     <string name="login_titulo">SACE UPTBAL</string>
     <string name="login_subtitulo">Sistema de Control de Estudios</string>
+    <string name="app_initials">UPTBAL - SACE</string>
+    <string name="app_welcome">Bienvenido al Sistema de Control de Estudios</string>
+    <string name="bienvenido">BIENVENIDO</string>
     <string name="login_usuario">Usuario</string>
     <string name="login_contrasena">Contraseña</string>
     <string name="login_boton">Ingresar</string>
@@ -55,6 +58,19 @@
     <string name="registro_sexo_m">Masculino</string>
     <string name="registro_registrando">Registrando…</string>
     <string name="registro_ok">Registro exitoso. Ya puede ingresar al sistema.</string>
+
+    <string name="registro_rapido_titulo">Registro de Estudiante</string>
+    <string name="registro_rapido_solicitar">¿No tiene su clave de registro? Solicítela aquí</string>
+    <string name="registro_rapido_paso1">Solicite su clave de registro</string>
+    <string name="registro_rapido_paso1_desc">Ingrese los datos tal como están registrados en el sistema. Si coinciden, recibirá su número de expediente y clave de registro en su correo electrónico.</string>
+    <string name="registro_rapido_boton_enviar">Enviar clave a mi correo</string>
+    <string name="registro_rapido_enviado">Si los datos son correctos, recibirá su número de expediente y clave de registro en su correo electrónico.</string>
+    <string name="registro_rapido_paso2">Cree su cuenta</string>
+    <string name="registro_rapido_paso2_desc">Ingrese los datos recibidos por correo. Sus datos personales se cargarán automáticamente.</string>
+    <string name="registro_rapido_boton_registrar">Registrarme e ingresar</string>
+    <string name="registro_rapido_enviando">Enviando…</string>
+    <string name="registro_rapido_auto_ok">Registro exitoso. Bienvenido(a).</string>
+    <string name="registro_rapido_volver_formulario">¿Tiene su clave? Complete el formulario tradicional</string>
 
     <string name="perfil_cambiar_foto">Cambiar foto</string>
     <string name="perfil_guardar">Guardar cambios</string>

@@ -10,6 +10,9 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="texto_gris">#6C757D</color>
+    <color name="cielo">#B8E2F5</color>
+    <color name="cielo_texto">#1B4F72</color>
+    <color name="cielo_acento">#3C8DBC</color>
     <color name="aprobado">#0056B3</color>
     <color name="reprobado">#DC3545</color>
 </resources>

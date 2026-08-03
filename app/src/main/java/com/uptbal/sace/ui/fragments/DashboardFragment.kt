@@ -1,5 +1,6 @@
 package com.uptbal.sace.ui.fragments
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.uptbal.sace.R
 import com.uptbal.sace.data.SessionManager
 import com.uptbal.sace.data.api.ApiClient
 import com.uptbal.sace.databinding.FragmentDashboardBinding
+import com.uptbal.sace.ui.login.LoginActivity
 import com.uptbal.sace.util.Boxes
 import com.uptbal.sace.util.ImageUtil
 import kotlinx.coroutines.flow.first
@@ -79,6 +81,21 @@ class DashboardFragment : Fragment() {
             binding.listaAccesos.addView(btn)
         }
 
+        val btnSalir = MaterialButton(ctx).apply {
+            text = getString(R.string.nav_salir)
+            setIconResource(R.drawable.ic_salir)
+            iconGravity = MaterialButton.ICON_GRAVITY_START
+            backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(ctx, R.color.adminlte_danger))
+            setTextColor(ContextCompat.getColor(ctx, R.color.white))
+            iconTint = ColorStateList.valueOf(ContextCompat.getColor(ctx, R.color.white))
+            layoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            ).apply { setMargins(0, Boxes.dp(ctx, 8), 0, 0) }
+            setOnClickListener { cerrarSesion() }
+        }
+        binding.listaAccesos.addView(btnSalir)
+
         lifecycleScope.launch {
             val carrera = try {
                 val res = ApiClient.service.inscripciones()
@@ -87,6 +104,17 @@ class DashboardFragment : Fragment() {
                 null
             }
             binding.txtCarrera.text = carrera ?: ""
+        }
+    }
+
+    private fun cerrarSesion() {
+        val session = SessionManager(requireContext())
+        lifecycleScope.launch {
+            runCatching { ApiClient.service.logout() }
+            ApiClient.apiToken = null
+            session.clearSession()
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
+            requireActivity().finishAffinity()
         }
     }
 

@@ -16,6 +16,9 @@
     </style>
 
     <style name="Theme.Uptbal.Login" parent="Theme.Uptbal">
-        <item name="android:windowBackground">@color/adminlte_sidebar</item>
+        <item name="android:windowBackground">@color/cielo</item>
+        <item name="android:statusBarColor">@color/cielo</item>
+        <item name="android:navigationBarColor">@color/cielo</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

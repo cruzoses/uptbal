@@ -17,6 +17,7 @@ import com.uptbal.sace.data.api.RecuperarClaveRequest
 import com.uptbal.sace.databinding.ActivityLoginBinding
 import com.uptbal.sace.ui.main.MainActivity
 import com.uptbal.sace.ui.registro.RegistroActivity
+import com.uptbal.sace.ui.registro.RegistroRapidoActivity
 import com.uptbal.sace.util.Boxes
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -34,9 +35,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         session = SessionManager(this)
 
+        binding.btnBienvenido.setOnClickListener {
+            binding.flipperLogin.showNext()
+            binding.btnBienvenido.isEnabled = false
+        }
         binding.btnIngresar.setOnClickListener { login() }
         binding.btnRegistroEstudiante.setOnClickListener { abrirRegistro(RegistroActivity.MODO_ESTUDIANTE) }
         binding.btnRegistroDocente.setOnClickListener { abrirRegistro(RegistroActivity.MODO_DOCENTE) }
+        binding.btnSolicitarClave.setOnClickListener {
+            startActivity(Intent(this, RegistroRapidoActivity::class.java))
+        }
         binding.btnOlvidoClave.setOnClickListener { recuperarClave() }
 
         verificarSesionExistente()

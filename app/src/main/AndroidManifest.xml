@@ -5,7 +5,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Uptbal"
@@ -31,6 +32,12 @@
             android:name=".ui.registro.RegistroActivity"
             android:exported="false"
             android:label="@string/registro_titulo_estudiante"
+            android:theme="@style/Theme.Uptbal" />
+
+        <activity
+            android:name=".ui.registro.RegistroRapidoActivity"
+            android:exported="false"
+            android:label="@string/registro_rapido_titulo"
             android:theme="@style/Theme.Uptbal" />
     </application>
 

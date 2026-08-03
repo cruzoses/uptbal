@@ -31,6 +31,12 @@ interface ApiService {
     @POST("api/registro-docente")
     suspend fun registroDocente(@Body body: Map<String, String>): MessageEnvelope
 
+    @POST("api/solicitar-token")
+    suspend fun solicitarToken(@Body body: Map<String, String>): MessageEnvelope
+
+    @POST("api/auto-registro-estudiante")
+    suspend fun autoRegistroEstudiante(@Body body: Map<String, String>): LoginResponse
+
     // ==================== ESTUDIANTE ====================
 
     @GET("api/me-estudiante")

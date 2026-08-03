@@ -5,6 +5,14 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
+import java.util.Properties
+
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(keystorePropertiesFile.inputStream())
+}
+
 android {
     namespace = "com.uptbal.sace"
     compileSdk = 36
@@ -19,8 +27,17 @@ android {
         buildConfigField(
             "String",
             "API_BASE_URL",
-            "\"${project.findProperty("apiBaseUrl") ?: "http://10.0.2.2/dace/"}\""
+            "\"${project.findProperty("apiBaseUrl") ?: "https://dace.uptbal.info.ve/"}\""
         )
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
+            storePassword = keystoreProperties.getProperty("storePassword")
+            keyAlias = keystoreProperties.getProperty("keyAlias")
+            keyPassword = keystoreProperties.getProperty("keyPassword")
+        }
     }
 
     buildTypes {
@@ -30,7 +47,16 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "API_BASE_URL", "\"http://localhost/dace/\"")
+            buildConfigField("String", "API_BASE_URL", "\"https://dace.uptbal.info.ve/\"")
+            if (keystorePropertiesFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
+            applicationVariants.all {
+                outputs.all {
+                    (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl)
+                        .outputFileName = "saceuptbal.apk"
+                }
+            }
         }
     }
 
