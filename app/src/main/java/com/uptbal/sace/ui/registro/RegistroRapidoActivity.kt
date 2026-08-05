@@ -10,10 +10,12 @@ import androidx.lifecycle.lifecycleScope
 import com.uptbal.sace.R
 import com.uptbal.sace.data.SessionManager
 import com.uptbal.sace.data.api.ApiClient
+import com.uptbal.sace.data.api.MessageEnvelope
 import com.uptbal.sace.databinding.ActivityRegistroRapidoBinding
 import com.uptbal.sace.ui.main.MainActivity
 import com.uptbal.sace.util.ImageUtil
 import kotlinx.coroutines.launch
+import kotlinx.serialization.decodeFromString
 import retrofit2.HttpException
 import java.io.IOException
 import java.util.Calendar
@@ -135,7 +137,7 @@ class RegistroRapidoActivity : AppCompatActivity() {
                 }
                 mostrarPaso2()
             } catch (e: HttpException) {
-                toast("Error del servidor (${e.code()})")
+                toast(errorMessage(e))
             } catch (e: IOException) {
                 toast("Sin conexión con el servidor. Verifique su red.")
             } catch (e: Exception) {
@@ -215,7 +217,7 @@ class RegistroRapidoActivity : AppCompatActivity() {
                     cargarCaptcha2()
                 }
             } catch (e: HttpException) {
-                toast("Error del servidor (${e.code()})")
+                toast(errorMessage(e))
                 cargarCaptcha2()
             } catch (e: IOException) {
                 toast("Sin conexión con el servidor. Verifique su red.")
@@ -225,6 +227,20 @@ class RegistroRapidoActivity : AppCompatActivity() {
                 binding.btnRegistrar.isEnabled = true
                 binding.progress2.visibility = View.GONE
             }
+        }
+    }
+
+    private fun errorMessage(e: HttpException): String {
+        return try {
+            val body = e.response()?.errorBody()?.string()
+            if (body.isNullOrBlank()) {
+                "Error del servidor (${e.code()})"
+            } else {
+                val env = ApiClient.json.decodeFromString<MessageEnvelope>(body)
+                env.error ?: env.message ?: "Error del servidor (${e.code()})"
+            }
+        } catch (t: Throwable) {
+            "Error del servidor (${e.code()})"
         }
     }
 
