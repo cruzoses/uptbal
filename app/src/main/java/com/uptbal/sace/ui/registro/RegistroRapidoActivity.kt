@@ -129,6 +129,10 @@ class RegistroRapidoActivity : AppCompatActivity() {
             try {
                 val res = ApiClient.service.solicitarToken(body)
                 toast(res.message ?: res.error ?: getString(R.string.registro_rapido_enviado))
+                if (!res.expediente.isNullOrBlank() && !res.token.isNullOrBlank()) {
+                    binding.inputExpediente.setText(res.expediente)
+                    binding.inputToken.setText(res.token)
+                }
                 mostrarPaso2()
             } catch (e: HttpException) {
                 toast("Error del servidor (${e.code()})")

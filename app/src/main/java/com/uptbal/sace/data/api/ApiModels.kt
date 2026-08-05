@@ -13,7 +13,9 @@ data class ApiEnvelope<T>(
 data class MessageEnvelope(
     val success: Boolean = false,
     val message: String? = null,
-    val error: String? = null
+    val error: String? = null,
+    val expediente: String? = null,
+    val token: String? = null
 )
 
 @Serializable
