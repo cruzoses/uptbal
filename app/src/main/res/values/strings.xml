@@ -23,8 +23,6 @@
     <string name="login_contrasena">Contraseña</string>
     <string name="login_boton">Ingresar</string>
     <string name="login_ingresando">Ingresando…</string>
-    <string name="login_registrarse_estudiante">Registrarse como Estudiante</string>
-    <string name="login_registrarse_docente">Registrarse como Docente</string>
     <string name="login_olvido">¿Olvidó su contraseña?</string>
 
     <string name="olvido_titulo">Recuperar contraseña</string>

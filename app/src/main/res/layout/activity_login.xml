@@ -170,23 +170,6 @@
             </com.google.android.material.card.MaterialCardView>
 
             <Button
-                android:id="@+id/btnRegistroEstudiante"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/login_registrarse_estudiante"
-                android:textColor="@color/cielo_acento" />
-
-            <Button
-                android:id="@+id/btnRegistroDocente"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/login_registrarse_docente"
-                android:textColor="@color/cielo_acento" />
-
-            <Button
                 android:id="@+id/btnSolicitarClave"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
